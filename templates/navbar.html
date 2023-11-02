@@ -1,0 +1,49 @@
+{% load static %}
+
+<nav class="flex text-gray-100 justify-between items-center py-3 px-4 fixed w-full z-50 ">
+    <div class="w-6/12">
+        <a href='/'>
+            <img src="{% static 'images/hashflix.png' %}" alt="logo" class="w-5/12 md:w-2/12">
+        </a>
+    </div>
+
+    <div class="w-6/12 flex flex-nowrap justify-end">
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+            <form method="get" action="{% url 'filme:pesquisafilme' %}">
+                <input class="py-1 px-2 rounded-md text-black" name="query" value="{{ request.GET.query }}" type="text"
+                    placeholder="Pesquisar...">
+                <input type="submit" value="">
+            </form>
+        </div>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+            <a href="{% url 'filme:editarperfil' request.user.pk %}" class="">
+                <button class='bg-red-600 py-1 px-3 text-white md:text-lg rounded-md'>
+                    Editar Perfil
+                </button>
+            </a>
+        </div>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+        <div class="mr-2">
+            <a href="{% url 'filme:logout' %}" class="">
+                <button class='bg-red-600 py-1 px-3 text-white md:text-lg rounded-md'>
+                Sair
+                </button>
+            </a>
+        </div>
+        {% else %}
+        <div class="mr-2">
+            <a href="{% url 'filme:login' %}" class="">
+                <button class='bg-red-600 py-1 px-3 text-white md:text-lg rounded-md'>
+                    Login
+                </button>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</nav>

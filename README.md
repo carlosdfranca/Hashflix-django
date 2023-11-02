@@ -1,2 +1,2 @@
-# Hashflix-django
- Cópia da netflix feita no curso Python Impressionador da Hashtag
+# Hashflix
+ Cópia da Netflix feito pela Hashtag
